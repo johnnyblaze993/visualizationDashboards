@@ -1,0 +1,36 @@
+cat > .gitignore <<'EOF'
+# Node / JS
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+dist/
+build/
+.next/
+.cache/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.python-version
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Docker / Env
+*.env
+.env.*
+**/.env
+docker-data/
+
+# Project-specific
+crewflex_data.zip
+ignored/
+powerbiEmbeddedEnvironment.session.sql
+EOF

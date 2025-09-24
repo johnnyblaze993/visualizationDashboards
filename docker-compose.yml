@@ -1,0 +1,46 @@
+services:
+  db:
+    container_name: navport_db
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      SA_PASSWORD: "-#password123sdJwnwlk"
+    ports: ["1433:1433"]
+    volumes:
+      - mssql_data:/var/opt/mssql
+      - ./ignored/backups:/var/opt/mssql/backup
+      - ./ignored/imports:/var/opt/mssql/imports
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"-#password123sdJwnwlk\" -C -Q \"SELECT 1\" || exit 1"]
+      interval: 10s
+      retries: 30
+      start_period: 20s
+      timeout: 3s
+
+  web:
+    container_name: navport_web
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      PORT: "3000"
+      DATABASE_HOST: "db"
+      DATABASE_PORT: "1433"
+      DATABASE_USER: "sa"
+      DATABASE_PASSWORD: "-#password123sdJwnwlk"
+      DATABASE_NAME: "NAVPORT"
+      SQL_ENCRYPT: "true"
+      SQL_TRUST_SERVER_CERTIFICATE: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/home/node/app:delegated
+      - web_node_modules:/home/node/app/node_modules
+
+volumes:
+  mssql_data:
+  web_node_modules:
