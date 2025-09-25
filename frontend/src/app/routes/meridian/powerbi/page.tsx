@@ -17,7 +17,7 @@ export default function MeridianPowerBIPage() {
             >
                 <ResponsivePowerBIFrame
                     title="MERIDIAN (iframe)"
-                    src="https://app.high.powerbigov.us/reportEmbed?reportId=5ada55b5-8c2d-4fb8-8840-ae5525c1c746&autoAuth=true&ctid=6dbe736e-d3ea-4ca9-ba0c-7162cddcbc47"
+                    src="https://app.high.powerbigov.us/reportEmbed?reportId=28d542d1-28e2-41c2-8ada-2db9226a7953&autoAuth=true&ctid=6dbe736e-d3ea-4ca9-ba0c-7162cddcbc47"
                 />
             </div>
         </div>

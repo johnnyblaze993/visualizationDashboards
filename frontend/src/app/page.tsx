@@ -13,7 +13,7 @@ export default function Home() {
         fontFamily: "sans-serif",
       }}
     >
-      <h1 style={{ fontSize: "2rem", fontWeight: "bold" }}>Power BI Demo App</h1>
+      <h1 style={{ fontSize: "2rem", fontWeight: "bold" }}>Dashboard Visualizations</h1>
       {/* <p style={{ color: "#555" }}>Choose a dashboard to view:</p> */}
       <div style={{ display: "flex", gap: 16 }}>
         <Link
